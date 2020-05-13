@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>za.co.nicolas</groupId>
+  <artifactId>pocker-test</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>pocker-test</name>
+
+  <properties>
+    <jdk.version>13</jdk.version>
+    <maven.compiler.source>13</maven.compiler.source>
+    <maven.compiler.target>13</maven.compiler.target>
+    <maven.compiler.target>${jdk.version}</maven.compiler.target>
+    <maven.compiler.source>${jdk.version}</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <exec.mainClass>za.co.nicolas.PokerSimulation</exec.mainClass>
+
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+    <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+
+  </properties>
+
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.4.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.4.2</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>${exec.mainClass}</mainClass>
+              <arguments>
+                <argument>arg0</argument>
+                <argument>arg1</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.1</version>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
